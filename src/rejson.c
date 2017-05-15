@@ -1709,7 +1709,7 @@ error:
 
 int RedisModule_OnLoad(RedisModuleCtx *ctx) {
     // Register the module
-    if (RedisModule_Init(ctx, RLMODULE_NAME, 1, REDISMODULE_APIVER_1) == REDISMODULE_ERR)
+    if (RedisModule_Init(ctx, RLMODULE_NAME, 2, REDISMODULE_APIVER_1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
     // Register the JSON data type
@@ -1724,87 +1724,87 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx) {
 
     /* Module commands. */
     /* Generic JSON type commands. */
-    if (RedisModule_CreateCommand(ctx, "json.resp", JSONResp_RedisCommand, "readonly", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.resp2", JSONResp_RedisCommand, "readonly", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.debug", JSONDebug_RedisCommand, "readonly getkeys-api",
+    if (RedisModule_CreateCommand(ctx, "json.debug2", JSONDebug_RedisCommand, "readonly getkeys-api",
                                   1, 1, 1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.type", JSONType_RedisCommand, "readonly", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.type2", JSONType_RedisCommand, "readonly", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.set", JSONSet_RedisCommand, "write deny-oom", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.set2", JSONSet_RedisCommand, "write deny-oom", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.get", JSONGet_RedisCommand, "readonly", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.get2", JSONGet_RedisCommand, "readonly", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.mget", JSONMGet_RedisCommand, "readonly getkeys-api",
+    if (RedisModule_CreateCommand(ctx, "json.mget2", JSONMGet_RedisCommand, "readonly getkeys-api",
                                   1, 1, 1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.del", JSONDel_RedisCommand, "write", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.del2", JSONDel_RedisCommand, "write", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.forget", JSONDel_RedisCommand, "write", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.forget2", JSONDel_RedisCommand, "write", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
     /* JSON number commands. */
-    if (RedisModule_CreateCommand(ctx, "json.numincrby", JSONNum_GenericCommand, "write", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.numincrby2", JSONNum_GenericCommand, "write", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.nummultby", JSONNum_GenericCommand, "write", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.nummultby2", JSONNum_GenericCommand, "write", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
     /* JSON string commands. */
-    if (RedisModule_CreateCommand(ctx, "json.strlen", JSONLen_GenericCommand, "readonly", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.strlen2", JSONLen_GenericCommand, "readonly", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.strappend", JSONStrAppend_RedisCommand,
+    if (RedisModule_CreateCommand(ctx, "json.strappend2", JSONStrAppend_RedisCommand,
                                   "write deny-oom", 1, 1, 1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
     /* JSON array commands matey. */
-    if (RedisModule_CreateCommand(ctx, "json.arrlen", JSONLen_GenericCommand, "readonly", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.arrlen2", JSONLen_GenericCommand, "readonly", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.arrinsert", JSONArrInsert_RedisCommand,
+    if (RedisModule_CreateCommand(ctx, "json.arrinsert2", JSONArrInsert_RedisCommand,
                                   "write deny-oom", 1, 1, 1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.arrappend", JSONArrAppend_RedisCommand,
+    if (RedisModule_CreateCommand(ctx, "json.arrappend2", JSONArrAppend_RedisCommand,
                                   "write deny-oom", 1, 1, 1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.arrindex", JSONArrIndex_RedisCommand, "readonly", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.arrindex2", JSONArrIndex_RedisCommand, "readonly", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.arrpop", JSONArrPop_RedisCommand, "write", 1, 1, 1) ==
+    if (RedisModule_CreateCommand(ctx, "json.arrpop2", JSONArrPop_RedisCommand, "write", 1, 1, 1) ==
         REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.arrtrim", JSONArrTrim_RedisCommand, "write", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.arrtrim2", JSONArrTrim_RedisCommand, "write", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
     /* JSON object commands. */
-    if (RedisModule_CreateCommand(ctx, "json.objlen", JSONLen_GenericCommand, "readonly", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.objlen2", JSONLen_GenericCommand, "readonly", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
-    if (RedisModule_CreateCommand(ctx, "json.objkeys", JSONObjKeys_RedisCommand, "readonly", 1, 1,
+    if (RedisModule_CreateCommand(ctx, "json.objkeys2", JSONObjKeys_RedisCommand, "readonly", 1, 1,
                                   1) == REDISMODULE_ERR)
         return REDISMODULE_ERR;
 
